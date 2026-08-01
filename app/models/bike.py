@@ -10,4 +10,4 @@ class Bike(Base):
     model = Column(String)
     is_available = Column(Boolean, default=True)  
     price_per_hour = Column(Float, default=5.0)
-    rentals = relationship("Rental", back_populates="bike")
+    rentals = relationship("Rental", back_populates="bike", cascade="all, delete-orphan")
