@@ -10,6 +10,8 @@ load_dotenv()
 
 from app.core.database import Base
 from app.models.bike import Bike
+from app.models.user import User    
+from app.models.rental import Rental
 
 config = context.config
 
