@@ -1,5 +1,4 @@
 
-
 API RESTful desarrollada con FastAPI, PostgreSQL y SQLAlchemy para 
 la gestión de la plataforma de movilidad urbana EcoRide. El proyecto 
 está completamente contenerizado con Docker y gestiona el historial 
@@ -29,7 +28,13 @@ Paso 3.1: Clonar el repositorio
    git clone https://github.com/csiv-code/ecoride_api.git
    cd ecoride_api
 
-Paso 3.2: Configurar variables de entorno (esta el .env.example)
+Paso 3.2: Configurar variables de entorno
+   Crea tu archivo .env basándote en la plantilla de ejemplo 
+   disponible en el proyecto (.env.example):
+
+   cp .env.example .env
+
+   (O crea manualmente el archivo .env con tus credenciales locales).
 
 Paso 3.3: Construir y levantar los contenedores Docker
    Ejecuta el siguiente comando para iniciar el servicio de la API 
@@ -39,7 +44,7 @@ Paso 3.3: Construir y levantar los contenedores Docker
 
 Paso 3.4: Aplicar migraciones de la Base de Datos
    En una segunda ventana de terminal, aplica las migraciones de 
-   Alembic para estructurar las tablas ('bikes' y 'users'):
+   Alembic para estructurar las tablas ('bikes', 'users' y 'rentals'):
 
    docker compose exec api alembic upgrade head
 
@@ -47,11 +52,12 @@ Paso 3.4: Aplicar migraciones de la Base de Datos
 4. DOCUMENTACIÓN INTERACTIVA DE LA API
 --------------------------------------------------------------------
 Una vez que el contenedor de la API esté en ejecución, puedes acceder 
-a la interfaz interactiva de Swagger UI desde tu navegador en:
-
-http://localhost:8000/docs
+a la interfaz interactiva de Swagger UI desde tu navegador en http://localhost:8000/docs
 
 Endpoints disponibles:
-- /api/bikes  : CRUD completo para la gestión de bicicletas.
-- /api/users  : CRUD completo para la gestión de usuarios.
+- /api/bikes   : CRUD completo para la gestión de bicicletas.
+- /api/users   : CRUD completo para la gestión de usuarios.
+- /api/rentals : CRUD y gestión de viajes/alquileres (incluye 
+                 relaciones, filtros por estado/usuario y regla de 
+                 negocio con cobro automático al finalizar en /complete).
 ====================================================================
