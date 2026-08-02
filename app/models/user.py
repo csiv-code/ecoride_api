@@ -10,4 +10,4 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     is_active = Column(Boolean, default=True)
 
-    rentals = relationship("Rental", back_populates="user")
+    rentals = relationship("Rental", back_populates="user", cascade="all, delete-orphan")
